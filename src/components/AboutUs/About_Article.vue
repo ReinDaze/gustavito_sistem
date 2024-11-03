@@ -1,4 +1,5 @@
 <script lang="ts">
+import { defineComponent } from 'vue';
 import org1 from '../../assets/images/AboutUsImg/org1.png';
 import org2 from '../../assets/images/AboutUsImg/org2.png';
 import org3 from '../../assets/images/AboutUsImg/org3.png';
@@ -12,14 +13,24 @@ import twitterIcon from '../../assets/images/logo/Twitter/Twitter.png';
 import instagramIcon from '../../assets/images/logo/Instagram/Instagram.png';
 import linkedinIcon from '../../assets/images/logo/LinkedIn/Linkedin.png';
 
-export default {
+interface SocialIcon {
+    iconSrc: string;
+    link: string;
+}
+
+interface Author {
+    name: string;
+    image: string;
+    socialIcons: SocialIcon[];
+}
+
+export default defineComponent({
     name: 'AboutContent',
     data() {
         return {
-            activeCard: null,
+            activeCard: null as number | null,
             authors: [
                 {
-                    id: 1,
                     name: 'Floyd Miles',
                     image: org1,
                     socialIcons: [
@@ -30,7 +41,6 @@ export default {
                     ]
                 },
                 {
-                    id: 2,
                     name: 'Dianne Russell',
                     image: org2,
                     socialIcons: [
@@ -41,7 +51,6 @@ export default {
                     ]
                 },
                 {
-                    id: 3,
                     name: 'Jenny Wilson',
                     image: org3,
                     socialIcons: [
@@ -52,7 +61,6 @@ export default {
                     ]
                 },
                 {
-                    id: 4,
                     name: 'Leslie Alexander',
                     image: org4,
                     socialIcons: [
@@ -63,7 +71,6 @@ export default {
                     ]
                 },
                 {
-                    id: 5,
                     name: 'Guy Hawkins',
                     image: org5,
                     socialIcons: [
@@ -74,7 +81,6 @@ export default {
                     ]
                 },
                 {
-                    id: 6,
                     name: 'Eleanor Pena',
                     image: org6,
                     socialIcons: [
@@ -85,7 +91,6 @@ export default {
                     ]
                 },
                 {
-                    id: 7,
                     name: 'Robert Fox',
                     image: org7,
                     socialIcons: [
@@ -96,7 +101,6 @@ export default {
                     ]
                 },
                 {
-                    id: 8,
                     name: 'Jacob Jones',
                     image: org8,
                     socialIcons: [
@@ -106,19 +110,19 @@ export default {
                         { iconSrc: linkedinIcon, link: '#' },
                     ]
                 }
-            ]
+            ] as Author[]
         };
     }
-};
+});
 </script>
 
 <style scoped>
 .bg-active {
     background-color: #fde68a;
-    /* Warna efek aktif */
     transition: background-color 0.3s ease;
 }
 </style>
+
 
 <template>
     <!-- Artikel -->
